@@ -1,0 +1,17 @@
+
+x
+java:S1104"]Make currentModulePath a static final constant or non-public and provide accessors if needed.(έρ™ ÿÿÿÿÿ
+z
+java:S1104	"_Make localRepositoryPath a static final constant or non-public and provide accessors if needed.(Β“°–ϊÿÿÿÿ
+y
+java:S1104"cMake hasPackagedDependencies a static final constant or non-public and provide accessors if needed.(Ν…¬ό
+R
+java:S1444"7Make this "public static currentModulePath" field final(έρ™ ÿÿÿÿÿ
+T
+java:S1444	"9Make this "public static localRepositoryPath" field final(Β“°–ϊÿÿÿÿ
+S
+java:S1444"=Make this "public static hasPackagedDependencies" field final(Ν…¬ό
+3
+java:S2386"Make this member "protected".(Ν…¬ό
+U
+java:S1118":Add a private constructor to hide the implicit public one.(΄©¬„ÿÿÿÿÿ

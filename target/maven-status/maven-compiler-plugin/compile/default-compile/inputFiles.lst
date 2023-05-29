@@ -1,0 +1,6 @@
+/Users/jiangjibo/IdeaProjects/dependency-processor/src/main/java/com/shulie/agent/dependency/entity/Dependency.java
+/Users/jiangjibo/IdeaProjects/dependency-processor/src/main/java/com/shulie/agent/dependency/constant/DependencyRepositoryConfig.java
+/Users/jiangjibo/IdeaProjects/dependency-processor/src/main/java/com/shulie/agent/dependency/ModuleConfigEditor.java
+/Users/jiangjibo/IdeaProjects/dependency-processor/src/main/java/com/shulie/agent/dependency/DependencyJarCollector.java
+/Users/jiangjibo/IdeaProjects/dependency-processor/src/main/java/com/shulie/agent/dependency/processor/LocalRepositoryManager.java
+/Users/jiangjibo/IdeaProjects/dependency-processor/src/main/java/com/shulie/agent/dependency/processor/PomFileReader.java
