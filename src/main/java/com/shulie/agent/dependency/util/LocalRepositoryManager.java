@@ -1,4 +1,4 @@
-package com.shulie.agent.dependency.processor;
+package com.shulie.agent.dependency.util;
 
 import com.shulie.agent.dependency.constant.DependencyRepositoryConfig;
 import com.shulie.agent.dependency.entity.Dependency;

@@ -1,4 +1,4 @@
-package com.shulie.agent.dependency.processor;
+package com.shulie.agent.dependency.util;
 
 import com.shulie.agent.dependency.constant.DependencyRepositoryConfig;
 import com.shulie.agent.dependency.entity.Dependency;
@@ -448,6 +448,65 @@ public class PomFileReader {
             file = new File(file.getAbsolutePath(), child);
         }
         return file;
+    }
+
+    /**
+     * 读取插件配置
+     *
+     * @param pom
+     * @return
+     * @throws IOException
+     */
+    public static Map<String, String> extractPluginConfigurations(String pom) throws IOException {
+        List<String> lines = Files.readAllLines(Paths.get(pom));
+
+        Map<String, String> properties = new HashMap<>();
+
+        String line;
+        String configuration = "";
+        Iterator<String> iterator = lines.iterator();
+        boolean findGoal = false;
+        while (iterator.hasNext()) {
+            line = iterator.next().trim();
+            if (line.contains("ModuleConfigEdit")) {
+                findGoal = true;
+                continue;
+            }
+            if (findGoal && line.contains("</plugin>")) {
+                break;
+            }
+            if (findGoal) {
+                if (line.contains("<includeArtifacts>") || line.contains("<excludeArtifacts>") || line.contains("<includeGroups>") || line.contains("<excludeGroups>")) {
+                    configuration = line;
+                }
+                if (line.contains("</includeArtifacts>")) {
+                    configuration = configuration.equals(line) ? configuration : configuration + line;
+                    properties.put("includeArtifacts", configuration.substring(18, configuration.length() - 19).trim());
+                    configuration = "";
+                    continue;
+                }
+                if (line.contains("</excludeArtifacts>")) {
+                    configuration = configuration.equals(line) ? configuration : configuration + line;
+                    properties.put("excludeArtifacts", configuration.substring(18, configuration.length() - 19).trim());
+                    configuration = "";
+                    continue;
+                }
+                if (line.contains("</includeGroups>")) {
+                    configuration = configuration.equals(line) ? configuration : configuration + line;
+                    properties.put("includeGroups", configuration.substring(15, configuration.length() - 16).trim());
+                    configuration = "";
+                    continue;
+                }
+                if (line.contains("</excludeGroups>")) {
+                    configuration = configuration.equals(line) ? configuration : configuration + line;
+                    properties.put("excludeGroups", configuration.substring(15, configuration.length() - 16).trim());
+                    configuration = "";
+                    continue;
+                }
+            }
+
+        }
+        return properties;
     }
 
 }

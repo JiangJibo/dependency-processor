@@ -25,18 +25,7 @@
       <instantiationStrategy>per-lookup</instantiationStrategy>
       <executionStrategy>once-per-session</executionStrategy>
       <threadSafe>false</threadSafe>
-      <parameters>
-        <parameter>
-          <name>moduleHome</name>
-          <type>java.lang.String</type>
-          <required>false</required>
-          <editable>true</editable>
-          <description></description>
-        </parameter>
-      </parameters>
-      <configuration>
-        <moduleHome implementation="java.lang.String">${moduleHome}</moduleHome>
-      </configuration>
+      <parameters/>
     </mojo>
     <mojo>
       <goal>ModuleConfigEdit</goal>
