@@ -56,6 +56,7 @@ public class ModuleConfigEditor extends AbstractMojo {
             lines.set(index, replacedLine);
             Files.write(moduleConfig, lines);
         } catch (Exception e) {
+            e.printStackTrace();
             getLog().error(String.format("[maven-plugin:dependency-processor] execute goal 'ModuleConfigEdit' parsing %s occur a exception!", moduleHome + File.separator + "pom.xml", e.getMessage()));
         }
 

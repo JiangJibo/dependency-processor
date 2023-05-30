@@ -39,6 +39,7 @@ public class DependencyJarCollector extends AbstractMojo {
         try {
             configurations = PomFileReader.extractPluginConfigurations(moduleHome + File.separator + "pom.xml");
         } catch (IOException e) {
+            e.printStackTrace();
             getLog().error(String.format("[maven-plugin:dependency-processor] execute goal 'DependencyJarCollect' parsing %s extract plugin configurations occur a exception!", moduleHome + File.separator + "pom.xml", e.getMessage()));
             return;
         }

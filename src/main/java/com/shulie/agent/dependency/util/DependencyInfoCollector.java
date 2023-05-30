@@ -53,6 +53,7 @@ public class DependencyInfoCollector {
             List<Dependency> deepDependencies = PomFileReader.collectDependenciesDeeply(dependencies);
             dependencies.addAll(deepDependencies);
         } catch (IOException e) {
+            e.printStackTrace();
             mojo.getLog().error(String.format("[maven-plugin:dependency-processor] execute goal 'DependencyCollector' parsing %s occur q exception!!", moduleHome + File.separator + "pom.xml"), e);
             return null;
         }
