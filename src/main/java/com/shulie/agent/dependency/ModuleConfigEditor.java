@@ -67,10 +67,7 @@ public class ModuleConfigEditor extends AbstractMojo {
         return dependencies.stream().map(new Function<Dependency, String>() {
             @Override
             public String apply(Dependency dependency) {
-                if (!dependency.version.contains("-")) {
-                    return dependency.artifactId;
-                }
-                return dependency.artifactId + "-" + dependency.version.substring(0, dependency.version.lastIndexOf("-"));
+                return dependency.artifactId;
             }
         }).collect(Collectors.joining(","));
     }
