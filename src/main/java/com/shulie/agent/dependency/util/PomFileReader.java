@@ -28,6 +28,7 @@ public class PomFileReader {
         boolean hasDep = false;
         boolean exclusion = false;
         boolean build = false;
+        boolean management = false;
 
         String groupId = "<groupId>", artifactId = "<artifactId>", version = "<version>", scope = "<scope>", optional = "<optional>";
 
@@ -35,6 +36,17 @@ public class PomFileReader {
         while (iterator.hasNext()) {
             line = iterator.next().trim();
             if (line.startsWith("<!-- ")) {
+                continue;
+            }
+            if (!includeManagement && line.contains("<dependencyManagement>")) {
+                management = true;
+                continue;
+            }
+            if (!includeManagement && line.contains("</dependencyManagement>")) {
+                management = false;
+                continue;
+            }
+            if (management) {
                 continue;
             }
             if (includeManagement ? line.contains("</dependencyManagement>") : line.contains("</dependencies>")) {
