@@ -55,5 +55,14 @@ public class DependencyJarCollector extends AbstractMojo {
         }
     }
 
+    public static void main(String[] args) throws MojoExecutionException, MojoFailureException {
+        DependencyJarCollector jarCollector = new DependencyJarCollector();
+        jarCollector.moduleHome = "/Users/jiangjibo/IdeaProjects/LinkAgent/instrument-modules/user-modules/module-pradar-core";
+        jarCollector.includeArtifacts = "guava";
+        jarCollector.excludeArtifacts = "transmittable-thread-local";
+        jarCollector.excludeGroups = "ch.qos.logback,org.springframework,io.shulie.instrument.simulator";
+        jarCollector.execute();
+    }
+
 
 }
